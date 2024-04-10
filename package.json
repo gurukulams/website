@@ -1,7 +1,7 @@
 {
-  "name": "website",
+  "name": "gurukulams",
   "version": "1.0.0",
-  "description": "Gurukulams Website.",
+  "description": "Gurukulams Website",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gurukulams/website.git"
@@ -15,13 +15,14 @@
     "url": "https://github.com/gurukulams/website/issues"
   },
   "homepage": "https://github.com/gurukulams/website#readme",
+  "source": "src/index.html",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
+    "@parcel/transformer-webmanifest": "^2.12.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "parcel": "^2.12.0"
   },
-  "source": "src/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"

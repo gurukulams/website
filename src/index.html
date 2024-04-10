@@ -2,98 +2,220 @@
 <html lang="en">
 
 <head>
+    <meta name="generator" content="Hugo 0.109.0">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Socio-Hub</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <base href="/">
+    <title>Gurukulams School</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <meta name="”robots”" content="index, follow">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./scss/main.scss" />
-
 </head>
+
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-                <a class="navbar-brand col-lg-3 me-0" href="#">Socio-Hub</a>
-      
-                <ul class="list-group list-group-horizontal d-lg-flex col-lg-9 justify-content-lg-end bg-none">
-                    
-                    <li class="list-group-item p-0 m-0 bg-none border-0 dropdown">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <img src="https://github.com/rmhari.png" width="40" class="rounded-circle">
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
+    <nav class="navbar navbar-expand-md navbar-light bg-white py-0 fixed-top">
+        <div class="container-fluid border-bottom border-top-1 shadow-sm bg-body">
+            <div class="btn-group invisible secured d-none">
+                <div class="d-flex bd-highlight"><a class="navbar-brand pe-0" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <div id="userMenu" class="flex-shrink-1 bd-highlight dropdown dropdown-toggle"><img
+                                src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                                class="img-circle img-thumbnail avatar"
+                                style="vertical-align:middle;border-radius:50%;width:3rem" alt="avatar"></div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li><a id="logoutBtn" class="dropdown-item" href="javascript://">Logout</a></li>
+                    </ul>
+                </div>
+            </div><span class="navbar-brand lh-1"><a href="/"
+                    class="h5 text-decoration-none"><strong>Gurukulams</strong></a><br>
+                <div class="text-muted text-end w-100 p-0 mb-0 dropdown border-0"><small data-code="en"
+                        class="dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown"
+                        aria-expanded="false">English</small>
+                    <ul class="dropdown-menu" aria-labelledby="languageBtn">
+                        <li><a class="dropdown-item" data-code="ta" href="ta/">தமிழ்</a></li>
+                    </ul>
+                </div>
+            </span><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse px-2" id="navbarMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul><i class="fas fa-search invisible secured"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"></i>
+                <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
+                        class="fab fa-google"></i></a>
+                <ul class="navbar-nav d-none secured"></ul>
             </div>
         </div>
     </nav>
 
-    <div id="posts" class="container mt-2">
+    <main id="main-container" class="container-fluid mt-5 py-4 w-100 h-100">
 
-    </div>
 
-    <template id="postTemplate">
-        <div class="row d-flex align-items-center justify-content-center mt-4">
-            <div class="col-md-6">
-                <div class="card bg-white">
-                    <div class="d-flex justify-content-between p-2 px-3">
-                        <div class="d-flex flex-row align-items-center"> 
-                            <img src="https://i.imgur.com/UXdKE3o.jpg"
-                                width="40" class="rounded-circle">
-                            <div class="d-flex flex-column mx-2"> <span class="font-weight-bold">Jeanette Sun</span>
-                                <small class="text-primary">Romaguera-Crona</small>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i
-                                class="fa fa-ellipsis-h"></i> </div>
-                    </div> <img src="https://picsum.photos/200" class="img-fluid">
-                    <div class="p-2">
-                        <h5>Post Title</h5>
-                        <p>Post Body</p>
 
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i><i
-                                    class="fa-regular fa-face-smile"></i> </div>
-                            <div class="d-flex flex-row muted-color"> <span>2 comments</span></div>
-                        </div>
-                        <hr>
-                        <div class="comments">
-                            
-                        </div>
-                            <div class="comment-input"> <input type="text" class="form-control">
-                                <div class="fonts"> <i class="fa fa-camera"></i> </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="container px-4">
+
+            <nav class="navbar">
+
+                <ol class="breadcrumb">
+
+
+
+                    <li class="breadcrumb-item"><a href="/books/tnebooks/11th-botany/">11th Std Botany</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Living World
+                    </li>
+                </ol>
+
+
+                <div id="bookOptionsPane" class="d-flex justify-content-end">
+
+                    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-references" role="button">
+                        <i class="fa-solid fa-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-references"
+                            title="References"></i>
+                    </button>
+
+                    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-videos" role="button">
+                        <i class="fa-solid fa-tv" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-videos"
+                            title="Videos"></i>
+                    </button>
+
+                    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-books" role="button">
+                        <i class="fa-solid fa-book" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-books"
+                            title="Books"></i>
+                    </button>
+
+
+
+
+
+
+
+
+
+                    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-notes" role="button">
+                        <i class="fa-regular fa-clipboard" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-notes"
+                            title="Notes"></i>
+                    </button>
+
+
+
+                    <a class="btn float-end" href="/questions/biology/botany/living-world" role="button">
+                        <i class="fas fa-user-check" title="Practice"></i>
+                    </a>
+
+
+
+
+                    <button class="btn" data-path="/biology/botany/living-world" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvas-quiz" role="button">
+                        <i class="fa-solid fa-trophy" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-quiz"
+                            title="Quiz"></i>
+                    </button>
+
+
+
+
+                    <button class="btn" data-path="/biology/botany/living-world" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvas-classes" role="button">
+                        <i class="fa-solid fa-chalkboard-user" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvas-classes" title="Classes"></i>
+                    </button>
+
+
+
                 </div>
+
+
+
+            </nav>
+
+            <nav class="w-50 p-3">
+                <ul class="lead">
+
+
+                    <li>
+                        <a
+                            href="/books/tnebooks/11th-botany/living-world/attributes-of-living-organisms/attributes-of-living-organisms">Attributes
+                            of living organisms</a>
+                    </li>
+
+                    <li>
+                        <a href="/books/tnebooks/11th-botany/living-world/viruses/viruses">Viruses</a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="/books/tnebooks/11th-botany/living-world/classification-of-living-world/classification-of-living-world">Classification
+                            of Living World</a>
+                    </li>
+
+                    <li>
+                        <a href="/books/tnebooks/11th-botany/living-world/bacteria/bacteria">Bacteria</a>
+                    </li>
+
+                    <li>
+                        <a href="/books/tnebooks/11th-botany/living-world/fungi/fungi">Fungi</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <div class="row lead">
+                <p>The learner will be able to,</p>
+                <ul>
+                    <li>Differentiate living and non-living things.</li>
+                    <li>Appreciate the attributes of living organisms.</li>
+                    <li>Compare the different classifications proposed by biologists.</li>
+                    <li>Recognize the general characters,structure and reproduction of Bacteria.</li>
+                    <li>Identify the characteristic features of Archaebacteria, Cyanobacteria, Mycoplasma and
+                        Actinomycetes.</li>
+                    <li>Describe the characteristic features of fungi.</li>
+                    <li>Outline the classification of fungi.</li>
+                    <li>Describe the structure and reproduction in Agaricus.</li>
+                    <li>Discuss the structure and uses of Mycorrhizae and Lichens.</li>
+                </ul>
+                <p>Earth was formed some 4.6 billion years ago. It is the life supporting planet with land forms
+                    like mountains, plateaus, glaciers, etc. Life on earth exists within a complex structure called
+                    <strong>biosphere</strong>. There exist many mysteries and wonders in the living world some are
+                    not visible but the activity of some capture the attention of all. For example the response of
+                    sun flower to the sunlight, the twinkling firefly in the dark forest, the rolling water droplets
+                    on the surface of lotus leaf, the closure of the leaf of venus fly trap on insect touch and a
+                    squid squeezing ink to escape from its predator. From this it is clear that the wonder planet
+                    earth harbours both landforms and life forms. Have you thought of DNA molecule? It is essential
+                    for the regulation of life and is made up of carbon, hydrogen, oxygen, nitrogen and phosphorus.
+                    thus nonliving and living things exist together to make our planet unique.
+                </p>
+
+
+
+                <p>According to a survey made by Mora <em>et al.,</em> 2011 the number of estimated species on earth
+                    is 8.7 million. The living world includes microbes, plants, animals and human beings which
+                    possess unique and distinct characteristic feature.</p><svg
+                    class="r6o-relations-layer readonly"></svg>
             </div>
+
+
         </div>
-    </template>
-    <template id="commentTemplate">
-        <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40"
-            class="rounded-image">
-        <div class="d-flex flex-column mx-2"> <span class="name">Daniel Frozer</span> <small
-                class="comment-text">Comment Body</small>
-            <div class="d-flex flex-row align-items-center status"> <small>Like</small>
-                <small>Reply</small> <small>18 mins</small>
-            </div>
-        </div>
-    </div>
-    </template>
+
+
+    </main>
+
 
     <script type="module" src="./js/main.js"></script>
 
