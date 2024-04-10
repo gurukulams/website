@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Socio-Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./scss/main.scss" />
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+                <a class="navbar-brand col-lg-3 me-0" href="#">Socio-Hub</a>
+      
+                <ul class="list-group list-group-horizontal d-lg-flex col-lg-9 justify-content-lg-end bg-none">
+                    
+                    <li class="list-group-item p-0 m-0 bg-none border-0 dropdown">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="https://github.com/rmhari.png" width="40" class="rounded-circle">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div id="posts" class="container mt-2">
+
+    </div>
+
+    <template id="postTemplate">
+        <div class="row d-flex align-items-center justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="card bg-white">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> 
+                            <img src="https://i.imgur.com/UXdKE3o.jpg"
+                                width="40" class="rounded-circle">
+                            <div class="d-flex flex-column mx-2"> <span class="font-weight-bold">Jeanette Sun</span>
+                                <small class="text-primary">Romaguera-Crona</small>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i
+                                class="fa fa-ellipsis-h"></i> </div>
+                    </div> <img src="https://picsum.photos/200" class="img-fluid">
+                    <div class="p-2">
+                        <h5>Post Title</h5>
+                        <p>Post Body</p>
+
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i><i
+                                    class="fa-regular fa-face-smile"></i> </div>
+                            <div class="d-flex flex-row muted-color"> <span>2 comments</span></div>
+                        </div>
+                        <hr>
+                        <div class="comments">
+                            
+                        </div>
+                            <div class="comment-input"> <input type="text" class="form-control">
+                                <div class="fonts"> <i class="fa fa-camera"></i> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="commentTemplate">
+        <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40"
+            class="rounded-image">
+        <div class="d-flex flex-column mx-2"> <span class="name">Daniel Frozer</span> <small
+                class="comment-text">Comment Body</small>
+            <div class="d-flex flex-row align-items-center status"> <small>Like</small>
+                <small>Reply</small> <small>18 mins</small>
+            </div>
+        </div>
+    </div>
+    </template>
+
+    <script type="module" src="./js/main.js"></script>
+
+</body>
+
+</html>

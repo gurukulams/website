@@ -1,0 +1,29 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Gurukulams Website.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurukulams/website.git"
+  },
+  "keywords": [
+    "Homepage"
+  ],
+  "author": "Haripriya Ravichandran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurukulams/website/issues"
+  },
+  "homepage": "https://github.com/gurukulams/website#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "parcel": "^2.12.0"
+  },
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  }
+}
