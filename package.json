@@ -25,6 +25,6 @@
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build --no-content-hash"
   }
 }
