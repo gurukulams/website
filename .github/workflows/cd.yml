@@ -20,7 +20,7 @@ jobs:
       - uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.GURUKULAMS_HOST }}
-          username: ${{ secrets.GURUKULAMS_USERNAME }}
+          username: ${{ secrets.GURUKULAMS_USER }}
           key: ${{ secrets.GURUKULAMS_KEY }}
           target: ${{ secrets.GURUKULAMS_WEB_ROOT }}
           source: "dist"
