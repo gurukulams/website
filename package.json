@@ -15,7 +15,7 @@
     "url": "https://github.com/gurukulams/website/issues"
   },
   "homepage": "https://github.com/gurukulams/website#readme",
-  "source": "src/index.html",
+  "source": "src/app.html",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
     "@parcel/transformer-webmanifest": "^2.12.0",
