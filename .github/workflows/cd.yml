@@ -20,6 +20,6 @@ jobs:
           host: ${{ secrets.GURUKULAMS_HOST }}
           username: ${{ secrets.GURUKULAMS_USER }}
           key: ${{ secrets.GURUKULAMS_KEY }}
-          target: ${{ secrets.GURUKULAMS_WEB_ROOT }}
+          target: ${{ secrets.GURUKULAMS_WORKSHOP_ROOT }}
           source: "dist"
           strip_components: 1
