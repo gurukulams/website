@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta name="generator" content="Hugo 0.109.0">
@@ -17,6 +17,7 @@
   <meta property="og:url" content="/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,7 +26,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-light bg-white py-0 fixed-top">
+  <nav class="navbar navbar-expand-md py-0 fixed-top">
     <div class="container border-bottom border-top-1 shadow-sm bg-body position-relative">
       <div class="btn-group">
         <div class="d-flex bd-highlight"><a class="navbar-brand pe-0" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +38,9 @@
             <li><a id="logoutBtn" class="dropdown-item" href="javascript://">Logout</a></li>
           </ul>
         </div>
-      </div><span class="navbar-brand lh-1"><a href="/"
+      </div>
+      
+      <span class="navbar-brand lh-1"><a href="/"
           class="h4 text-decoration-none"><strong>Gurukulams</strong></a><br>
         <div class="text-muted text-end w-100 p-0 mb-0 dropdown border-0"><small data-code="en" class="dropdown-toggle"
             type="button" id="languageBtn" data-bs-toggle="dropdown" aria-expanded="false">English</small>
@@ -45,20 +48,35 @@
             <li><a class="dropdown-item" data-code="ta" href="ta/">தமிழ்</a></li>
           </ul>
         </div>
-      </span><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+      </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
         aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse px-2" id="navbarMain">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul><i class="fas fa-search invisible secured"
-          data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"></i>
-        <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
-            class="fab fa-google"></i></a>
-        <ul class="navbar-nav d-none secured"></ul>
-      </div>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+        <div class="collapse navbar-collapse px-2" id="navbarMain">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <i class="fas fa-search invisible secured" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"></i>
+          <div class="dropdown me-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Select Theme
+            </button>
+            <ul class="dropdown-menu me-auto" aria-labelledby="themeDropdown">
+              <li><a class="dropdown-item" href="#" data-theme="light"> <i class="bi bi-sun-fill"></i> Light</a></li>
+              <li><a class="dropdown-item" href="#" data-theme="dark"> <i class="bi bi-moon-stars-fill"></i> Dark</a></li>
+              <li><a class="dropdown-item" href="#" data-theme="auto"> <i class="bi bi-circle-half"></i> Auto</a></li>
+            </ul>
+          </div>
+          <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
+              class="fab fa-google"></i></a>
+          <ul class="navbar-nav d-none secured"></ul>
+        </div>
       <!-- Scroll Indicator -->
       <div class="scroll-indicator" id="scrollIndicator"></div>
     </div>
   </nav>
+  
   
 
 
@@ -260,7 +278,7 @@
 
 
   <script type="module" src="./js/app.js"></script>
-
+  
 </body>
 
 </html>
