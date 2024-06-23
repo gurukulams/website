@@ -1,0 +1,6 @@
+{
+  "extends": "@parcel/config-default",
+  "namers": [
+    "./plugins/CleanNamer"
+  ]
+}
