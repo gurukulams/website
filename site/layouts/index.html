@@ -297,7 +297,16 @@
 
 
   <script type="module" src="./js/app.js"></script>
-  
+
+  {{ if getenv "BUILD_PRODUCTION" }}
+
+  {{ else }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('Hello Local Boy');
+    });
+  </script>
+  {{ end }}
 </body>
 
 </html>
