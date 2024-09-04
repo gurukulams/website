@@ -135,3 +135,4 @@ src/*.html
 src/*.xml
 src/**/*.html
 src/**/*.xml
+src/img
