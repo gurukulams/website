@@ -1,32 +1,29 @@
 {
-  "name": "gurukulams",
+  "name": "workspace",
   "version": "1.0.0",
-  "description": "Gurukulams Website",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gurukulams/website.git"
+  "description": "Gurukulams Workspace",
+  "source": "src/index.html",
+  "scripts": {
+    "watch:src": "parcel",
+    "watch:site": "onchange \"site\" -- run-s build:site",
+    "start": "npm run build && run-p watch:site watch:src",
+    "build:src": "parcel build",
+    "build:site": "hugo --minify -d ../src -s site -v",
+    "build": "npm run build:site && npm run build:src",
+    "create": "hugo new site",
+    "serve": "hugo server"
   },
-  "keywords": [
-    "Homepage"
-  ],
-  "author": "Haripriya Ravichandran",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gurukulams/website/issues"
-  },
-  "homepage": "https://github.com/gurukulams/website#readme",
-  "source": "src/app.html",
   "devDependencies": {
     "@parcel/plugin": "^2.12.0",
     "@parcel/transformer-sass": "^2.12.0",
     "@parcel/transformer-webmanifest": "^2.12.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
+    "hugo-bin": "^0.133.1",
+    "npm-run-all": "4.1.5",
+    "onchange": "^7.1.0",
     "parcel": "^2.12.0"
-  },
-  "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
   }
 }
