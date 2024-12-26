@@ -1,3 +1,3 @@
-baseURL = 'https://techatpark.com/'
+baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'TECT@PARK'
+title = 'My New Hugo Site'
