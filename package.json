@@ -1,32 +1,30 @@
 {
-  "name": "workspace",
+  "name": "gurukulams-website",
   "version": "1.0.0",
-  "description": "Gurukulams Workspace",
+  "description": "Gurukulams Website",
   "source": "src/index.html",
+  "author": "Sathish Kumar Thiyagarajan",
+  "license": "ISC",
   "scripts": {
     "watch:src": "parcel",
     "watch:site": "onchange \"site\" -- run-s build:site",
     "start": "npm run build && run-p watch:site watch:src",
     "build:src": "parcel build",
-    "build:site": "hugo --minify -d ../src -s site -v",
+    "build:site": "hugo --minify -d ../src -s site",
     "build": "npm run build:site && npm run build:src",
     "create": "hugo new site",
     "serve": "hugo server"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@parcel/plugin": "^2.12.0",
-    "@parcel/transformer-sass": "^2.12.0",
-    "@parcel/transformer-webmanifest": "^2.12.0",
+    "parcel": "^2.13.3",
+    "@parcel/plugin": "^2.13.3",
+    "@parcel/transformer-sass": "^2.13.3",
+    "@parcel/transformer-webmanifest": "^2.13.3",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "hugo-bin": "^0.133.1",
+    "bootstrap-icons": "^1.11.3",
+    "hugo-bin": "^0.137.1",
     "npm-run-all": "4.1.5",
-    "onchange": "^7.1.0",
-    "parcel": "^2.12.0"
-  },
-  "dependencies": {
-    "bootstrap-icons": "^1.11.3"
+    "onchange": "^7.1.0"
   }
 } 
