@@ -2,8 +2,9 @@ import { Dropdown } from "bootstrap";
 
 class GurukulamsPage {
     constructor() {
-        this.setScrollIndicator();
+        this.handleSecurity();
         this.setThemeSetting();
+        this.setScrollIndicator();
     }
 
     setThemeSetting() {
@@ -47,6 +48,25 @@ class GurukulamsPage {
             scrollIndicator.style.width = scrollPercentage + '%';
         });
     }
+
+    handleSecurity() {
+        console.log('Handle Security');
+        
+        if (sessionStorage.auth) {
+
+          document.getElementById("login-pane").remove("d-none");
+
+          document.getElementById("logoutBtn").addEventListener("click", () => {
+            delete sessionStorage.auth;
+            window.location.reload();
+          });
+
+          const userAuth = JSON.parse(sessionStorage.auth);
+    
+          document.querySelector(".avatar").src = userAuth.profilePicture;
+          
+        } 
+      }
 }
 
 class HomePage extends GurukulamsPage {

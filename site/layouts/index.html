@@ -17,7 +17,7 @@
   <meta property="og:url" content="/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -39,9 +39,8 @@
           </ul>
         </div>
       </div>
-      
-      <span class="navbar-brand lh-1"><a href="/"
-          class="h4 text-decoration-none"><strong>Gurukulams</strong></a><br>
+
+      <span class="navbar-brand lh-1"><a href="/" class="h4 text-decoration-none"><strong>Gurukulams</strong></a><br>
         <div class="text-muted text-end w-100 p-0 mb-0 dropdown border-0"><small data-code="en" class="dropdown-toggle"
             type="button" id="languageBtn" data-bs-toggle="dropdown" aria-expanded="false">English</small>
           <ul class="dropdown-menu" aria-labelledby="languageBtn">
@@ -53,50 +52,50 @@
         aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
-        <div class="collapse navbar-collapse px-2" id="navbarMain">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <i class="fas fa-search invisible secured" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"></i>
-          <div class="dropdown me-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Select Theme
-            </button>
-            <ul class="dropdown-menu me-auto" aria-labelledby="themeDropdown">
-              <li><a class="dropdown-item" href="#" data-theme="auto"> <i class="bi bi-circle-half"></i> Auto</a></li>
-              <li><a class="dropdown-item" href="#" data-theme="light"> <i class="bi bi-sun-fill"></i> Light</a></li>
-              <li><a class="dropdown-item" href="#" data-theme="dark"> <i class="bi bi-moon-stars-fill"></i> Dark</a></li>
-            </ul>
-          </div>
-          {{ if getenv "BUILD_PRODUCTION" }}
-          <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
-              class="fab fa-google"></i></a>
-              {{ else }}
 
-    
-    
-    <div id="login-pane" class="row align-items-center">
+      <div class="collapse navbar-collapse px-2" id="navbarMain">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <i class="fas fa-search invisible secured" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"></i>
+        <div class="dropdown me-3">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
 
-      <div id="users-group" class="btn-group" role="group" aria-label="Basic outlined example">
-        {{ range readDir "static/img/users" }}
-          <button type="button" name="{{ replace .Name ".png" "" }}" class="btn">
-            <img src="./img/users/{{ .Name }}" class="img-circle img-thumbnail"
-                style="vertical-align: middle;border-radius: 50%;width: 42px;" alt="avatar">
-          </button>  
-        {{ end }}
-      </div>
-      
-    </div>
-
-      {{ end }}
-          <ul class="navbar-nav d-none secured"></ul>
+          </button>
+          <ul class="dropdown-menu me-auto" aria-labelledby="themeDropdown">
+            <li><a class="dropdown-item" href="#" data-theme="auto"> <i class="bi bi-circle-half"></i> Auto</a></li>
+            <li><a class="dropdown-item" href="#" data-theme="light"> <i class="bi bi-sun-fill"></i> Light</a></li>
+            <li><a class="dropdown-item" href="#" data-theme="dark"> <i class="bi bi-moon-stars-fill"></i> Dark</a></li>
+          </ul>
         </div>
+        {{ if getenv "BUILD_PRODUCTION" }}
+        <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
+            class="fab fa-google"></i></a>
+        {{ else }}
+
+
+
+        <div id="login-pane" class="row align-items-center">
+
+          <div id="users-group" class="btn-group" role="group" aria-label="Basic outlined example">
+            {{ range readDir "static/img/users" }}
+            <button type="button" name="{{ replace .Name ".png" "" }}" class="btn">
+              <img src="./img/users/{{ .Name }}" class="img-circle img-thumbnail"
+                style="vertical-align: middle;border-radius: 50%;width: 42px;" alt="avatar">
+            </button>
+            {{ end }}
+          </div>
+
+        </div>
+
+        {{ end }}
+        <ul class="navbar-nav d-none secured"></ul>
+      </div>
       <!-- Scroll Indicator -->
       <div class="scroll-indicator" id="scrollIndicator"></div>
     </div>
   </nav>
-  
-  
+
+
 
 
   <div class="container mt-5 py-4">
@@ -303,8 +302,52 @@
   {{ else }}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      console.log('Hello Local Boy');
+
+      const userBtns = document.querySelectorAll("#users-group>button.btn");
+
+      userBtns.forEach((userBtn) => {
+        userBtn.addEventListener('click', event => {
+          event.preventDefault();
+          let authRequest = {
+            userName: event.currentTarget.name + "@email.com",
+            password: event.currentTarget.name + "password",
+          };
+          fetch("/api/auth/login", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(authRequest),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw Error(response.statusText);
+              }
+              return response.json();
+            })
+            .then((auth_response) => {
+
+              console.log(auth_response);
+              
+              if (auth_response.expiresIn) {
+                auth_response.expiresIn = Date.now() + auth_response.expiresIn;
+                sessionStorage.auth = JSON.stringify(auth_response);
+                location.reload();
+              } else {
+                sessionStorage.setItem("ref_page", window.location.href);
+                sessionStorage.setItem("reg_token", auth_response.registrationToken);
+                sessionStorage.setItem("profile_pic", auth_response.profilePicture);
+                window.location.href = "/welcome";
+              }
+            })
+            .catch((err) => {
+              // document.querySelector(".d-none").classList.remove("d-none");
+              alert(err);
+            });
+        })
+      });
     });
+
   </script>
   {{ end }}
 </body>
