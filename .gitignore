@@ -129,9 +129,3 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Remove Hugo Generated Files
-src/*.html
-src/*.xml
-src/**/*.html
-src/**/*.xml
-src/img
