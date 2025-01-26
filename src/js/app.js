@@ -10,7 +10,7 @@ class GurukulamsPage {
     setThemeSetting() {
         document.addEventListener('DOMContentLoaded', function () {
             const themeDropdownButton = document.getElementById('themeDropdown');
-            const themeDropdownItems = document.querySelectorAll('.dropdown-item');
+            const themeDropdownItems = document.querySelectorAll('.dropdown-item[data-theme]');
             const icons = {
                 light: 'sun-fill',
                 dark: 'moon-stars-fill',
