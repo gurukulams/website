@@ -12,9 +12,9 @@ class GurukulamsPage {
             const themeDropdownButton = document.getElementById('themeDropdown');
             const themeDropdownItems = document.querySelectorAll('.dropdown-item');
             const icons = {
-                light: 'bi-sun-fill',
-                dark: 'bi-moon-stars-fill',
-                auto: 'bi-circle-half'
+                light: 'sun-fill',
+                dark: 'moon-stars-fill',
+                auto: 'circle-half'
             };
 
             function setTheme(theme) {
@@ -24,7 +24,7 @@ class GurukulamsPage {
                     theme, themename = prefersDarkScheme ? 'dark' : 'light';
                 }
                 document.documentElement.setAttribute('data-bs-theme', theme);
-                themeDropdownButton.innerHTML = `<i class="bi ${icons[theme]}"></i>`;
+                themeDropdownButton.innerHTML = `<svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#${icons[theme]}"></use></svg>`;
             }
 
             setTheme('auto');
