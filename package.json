@@ -7,29 +7,27 @@
   "license": "ISC",
   "scripts": {
     "watch:sass": "onchange \"src/scss\" -- run-s build:sass",
-    "watch:js": "webpack serve",
+    "watch:js": "onchange \"src/js\" -- run-s build:js",
     "watch:site": "onchange \"site\" -- run-s build:site",
 
-    "start": "npm run build && run-p watch:*",
+    "start": "npm run build && run-p watch:* serve",
+    "serve": "webpack serve",
 
     "build:sass": "sass src/scss:dist/css",
     "build:js": "webpack",
     "build:site": "hugo --minify -d ../dist -s site",
-    "build": "run-s build:*",
-    
-    "create": "hugo new site",
-    "serve": "hugo server"
+    "build": "run-s build:*"
   },
   "devDependencies": {
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0",
     "clean-webpack-plugin": "^4.0.0",
-    "sass": "1.50.0",
+    "sass": "1.83.4",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "hugo-bin": "^0.137.1",
+    "hugo-bin": "^0.139.0",
     "npm-run-all": "4.1.5",
     "onchange": "^7.1.0"
   },
