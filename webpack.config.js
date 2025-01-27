@@ -19,7 +19,7 @@ module.exports = {
       static: {
         directory: path.join(__dirname, 'dist'),
       },
-      port: 3000, // The port you want to use
+      port: 4000, // The port you want to use
       open: true,
       hot:true,
       liveReload: true
