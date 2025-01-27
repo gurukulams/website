@@ -14,10 +14,18 @@
       </div>
 
       <span class="navbar-brand lh-1"><a href="/" class="h4 text-decoration-none"><strong>Gurukulams</strong></a><br>
-        <div class="text-muted text-end w-100 p-0 mb-0 dropdown border-0"><small data-code="en" class="dropdown-toggle"
-            type="button" id="languageBtn" data-bs-toggle="dropdown" aria-expanded="false">English</small>
+        <div class="text-muted text-end w-100 p-0 mb-0 dropdown border-0">
+          <small data-code={{$.Site.Home.Language.Lang}} class="dropdown-toggle" type="button" id="languageBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            {{$.Site.Home.Language.LanguageName}}
+          </small>
           <ul class="dropdown-menu" aria-labelledby="languageBtn">
-            <li><a class="dropdown-item" data-code="ta" href="ta/">தமிழ்</a></li>
+            {{ range $.Site.Home.Translations }}
+            <li>
+              <a class="dropdown-item" data-code={{.Language.Lang}} href="{{ if (ne .Language.Lang "en") }}{{ .Language.Lang }}{{ $.RelPermalink }} {{ else }}{{ substr $.RelPermalink 3 }}{{ end }}">
+                {{ .Language.LanguageName }}
+              </a>
+            </li>
+            {{ end }}
           </ul>
         </div>
       </span>
@@ -55,9 +63,6 @@
         <a id="login-pane" href="javascript://" class="btn btn-outline-primary text-left mt-1">Login | <i
             class="fab fa-google"></i></a>
         {{ else }}
-
-
-
         <div id="login-pane" class="row align-items-center">
 
           <div id="users-group" class="btn-group" role="group" aria-label="Basic outlined example">
