@@ -50,8 +50,6 @@ class GurukulamsPage {
     }
 
     handleSecurity() {
-        console.log('Handle Security');
-        
         if (sessionStorage.auth) {
 
           document.getElementById("login-pane").remove("d-none");
