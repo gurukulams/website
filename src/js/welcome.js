@@ -24,6 +24,10 @@ class WelcomePage {
   register(registrationToken, profile_pic) {
     console.log(registrationToken, profile_pic);
 
+    document.body.querySelector("img").src = profile_pic;
+    document.querySelector("main").classList.remove("d-none");
+    document.querySelector("#name").focus();
+
     document.querySelector("form").addEventListener("submit", (event) => {
       event.token = registrationToken;
       event.preventDefault();
@@ -47,14 +51,14 @@ class WelcomePage {
           return response.json();
         }
       })
-      .then((auth_response) => {
-        auth_response.expiresIn = Date.now() + auth_response.expiresIn;
-        sessionStorage.auth = JSON.stringify(auth_response);
-        this.reload();
-      }).catch(() => {
-        console.log("Unable to register contact admin");
+        .then((auth_response) => {
+          auth_response.expiresIn = Date.now() + auth_response.expiresIn;
+          sessionStorage.auth = JSON.stringify(auth_response);
+          this.reload();
+        }).catch(() => {
+          console.log("Unable to register contact admin");
 
-      })
+        })
     });
 
   }
