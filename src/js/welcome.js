@@ -7,21 +7,13 @@ class WelcomePage {
     console.log(token);
     if (token) {
       console.log("register token");
-
     } else {
-      console.log("no register token");
-
       const reg_token = sessionStorage.getItem("reg_token");
-
       if (reg_token) {
         this.register(reg_token, sessionStorage.getItem("ref_page"));
         document.body.querySelector("img").src = sessionStorage.getItem("profile_pic");
       }
-
-
-      sessionStorage.clear();
-
-
+      
     }
 
   }
@@ -59,9 +51,7 @@ class WelcomePage {
         }
       })
         .then((auth_response) => {
-          auth_response.expiresIn = Date.now() + auth_response.expiresIn;
-          sessionStorage.auth = JSON.stringify(auth_response);
-          this.reload(refPage);
+          this.reload(refPage, auth_response);
         }).catch(() => {
           console.log("Unable to register contact admin");
 
@@ -70,7 +60,14 @@ class WelcomePage {
 
   }
 
-  reload(refPage) {
+  reload(refPage, auth_response) {
+    sessionStorage.clear();
+
+    if(auth_response) {
+      auth_response.expiresIn = Date.now() + auth_response.expiresIn;
+      sessionStorage.auth = JSON.stringify(auth_response);
+    }
+    
     if (refPage) {
       window.location.href = refPage;
       window.location.replace(refPage);

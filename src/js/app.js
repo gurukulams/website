@@ -3,8 +3,13 @@ import { Dropdown } from "bootstrap";
 class GurukulamsPage {
     constructor() {
         this.handleSecurity();
+        this.handleValidation();
         this.setThemeSetting();
         this.setScrollIndicator();
+    }
+
+    handleValidation() {
+        
     }
 
     setThemeSetting() {
