@@ -50,6 +50,8 @@ class GurukulamsPage {
     }
 
     handleSecurity() {
+
+        // If User is Logged in
         if (sessionStorage.auth) {
 
           document.getElementById("login-pane").remove("d-none");
@@ -62,8 +64,21 @@ class GurukulamsPage {
           const userAuth = JSON.parse(sessionStorage.auth);
     
           document.querySelector(".avatar").src = userAuth.profilePicture;
+
+          document.querySelectorAll(".secured").forEach((el) => {
+            el.classList.remove('secured');
+         });
+
+         const userMenu = document.getElementById('userMenu');
+
+         userMenu.classList.add('dropdown');
+         userMenu.classList.add('dropdown-toggle');
           
-        } 
+        } else { // If User is not Logged in
+            document.querySelectorAll(".secured").forEach((el) => {
+                el.parentElement.removeChild(el);
+            });
+        }
       }
 }
 
