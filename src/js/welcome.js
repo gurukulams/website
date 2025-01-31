@@ -4,7 +4,7 @@ class WelcomePage {
     const params = new URLSearchParams(window.location.search);
 
     const token = params.get("token");
-    console.log(token);
+
     if (token) {
       console.log("register token");
     } else {
@@ -40,7 +40,7 @@ class WelcomePage {
       const age = this.getAge(regRequest.dob);
 
       if (age < 10 || age > 80) {
-        console.log("Please Enter valid Date of Birth");
+        this.showError("Please Enter valid Date of Birth");
       } else {
         fetch("/api/auth/register", {
           method: "POST",
@@ -68,8 +68,12 @@ class WelcomePage {
       }
     });
 
-    
+  }
 
+  showError(errorMsg) {
+    const errorSpan = document.querySelector('label.text-danger');
+    errorSpan.classList.remove('invisible');
+    errorSpan.innerHTML = errorMsg;
   }
 
   getAge(value) {
