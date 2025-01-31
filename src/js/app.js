@@ -84,7 +84,7 @@ class GurukulamsPage {
                 el.parentElement.removeChild(el);
             });
         }
-      }
+    }
 }
 
 class HomePage extends GurukulamsPage {
