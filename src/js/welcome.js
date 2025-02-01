@@ -13,13 +13,12 @@ class WelcomePage {
         this.register(reg_token, sessionStorage.getItem("ref_page"));
         document.body.querySelector("img").src = sessionStorage.getItem("profile_pic");
       }
-      
     }
-
   }
 
   register(registrationToken, refPage) {
-
+    
+    console.log(registrationToken)
     document.querySelector("main").classList.remove("d-none");
     document.querySelector("#name").focus();
 
@@ -35,8 +34,7 @@ class WelcomePage {
         name: document.querySelector("#name").value,
         dob: document.querySelector("#dob").value,
       };
-    
-
+  
       const age = this.getAge(regRequest.dob);
 
       if (age < 10 || age > 80) {
@@ -46,7 +44,7 @@ class WelcomePage {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            Authorization: "Bearer " + event.token,
+            Authorization: "Bearer " + registrationToken,
           },
           body: JSON.stringify(regRequest),
         })
@@ -58,9 +56,7 @@ class WelcomePage {
             }
           })
           .then((auth_response) => {
-            auth_response.expiresIn = Date.now() + auth_response.expiresIn;
-            sessionStorage.auth = JSON.stringify(auth_response);
-            this.reload();
+            this.reload(refPage, auth_response);
           })
           .catch(() => {
             this.showError("Unable to register. Please contact admin");
@@ -98,11 +94,11 @@ class WelcomePage {
   }
 
   reload(refPage, auth_response) {
-    sessionStorage.clear();
-
+  
     if(auth_response) {
+      sessionStorage.clear();
       auth_response.expiresIn = Date.now() + auth_response.expiresIn;
-      sessionStorage.auth = JSON.stringify(auth_response);
+      sessionStorage.setItem('auth', JSON.stringify(auth_response));
     }
     
     if (refPage) {
