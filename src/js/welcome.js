@@ -4,9 +4,28 @@ class WelcomePage {
     const params = new URLSearchParams(window.location.search);
 
     const token = params.get("token");
+       
 
     if (token) {
-      console.log("register token");
+      document.querySelector("main").classList.add("d-none");
+      fetch("/api/auth/welcome", {
+        headers: {
+          "content-type": "application/json",
+          Authorization: params.get("token"),
+        },
+      })
+        .then((response) => response.json())
+        .then((auth_response) => {
+          if (auth_response.authToken) {
+            this.reload(sessionStorage.getItem("ref_page"), auth_response);
+          } else {
+            document.body.querySelector("img").src = auth_response.profilePicture;
+            this.register(
+              auth_response.registrationToken,
+              sessionStorage.getItem("ref_page")
+            );
+          }
+        });
     } else {
       const reg_token = sessionStorage.getItem("reg_token");
       if (reg_token) {

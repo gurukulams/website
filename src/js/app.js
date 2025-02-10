@@ -80,9 +80,21 @@ class GurukulamsPage {
          userMenu.classList.add('dropdown-toggle');
           
         } else { // If User is not Logged in
-            document.querySelectorAll(".secured").forEach((el) => {
-                el.parentElement.removeChild(el);
-            });
+            if (document.querySelector(".secured") !== null) {
+                document.querySelector(".secured").classList.add("d-none");
+                document.getElementById("login-pane").classList.remove("d-none");
+        
+                if (document.querySelector(".fa-google")) {
+                  document
+                    .querySelector(".fa-google")
+                    .parentElement.addEventListener("click", () => {
+                      sessionStorage.setItem("ref_page", window.location.href);
+                      window.location.href = `/oauth2/authorize/google?redirect_uri=${
+                        window.location.protocol + "//" + window.location.host
+                      }/welcome`;
+                    });
+                }
+              }
         }
     }
 }
