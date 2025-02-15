@@ -29,13 +29,16 @@ class WelcomePage {
     } else {
       const reg_token = sessionStorage.getItem("reg_token");
       if (reg_token) {
-        this.register(reg_token, sessionStorage.getItem("ref_page"));
         document.body.querySelector("img").src = sessionStorage.getItem("profile_pic");
+        this.register(reg_token, sessionStorage.getItem("ref_page"));
+        
       }
     }
   }
 
   register(registrationToken, refPage) {
+
+    sessionStorage.clear();
     
     console.log(registrationToken)
     document.querySelector("main").classList.remove("d-none");
@@ -115,7 +118,6 @@ class WelcomePage {
   reload(refPage, auth_response) {
   
     if(auth_response) {
-      sessionStorage.clear();
       auth_response.expiresIn = Date.now() + auth_response.expiresIn;
       sessionStorage.setItem('auth', JSON.stringify(auth_response));
     }
