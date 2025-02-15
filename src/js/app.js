@@ -59,6 +59,10 @@ class GurukulamsPage {
         // If User is Logged in
         if (sessionStorage.auth) {
 
+            document.querySelector("a.navbar-brand").setAttribute('data-bs-toggle', "dropdown");
+
+          // data-bs-toggle="dropdown"
+
           document.getElementById("login-pane").remove("d-none");
 
           document.getElementById("logoutBtn").addEventListener("click", () => {
