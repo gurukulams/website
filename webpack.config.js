@@ -14,7 +14,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     // plugins: [new CleanWebpackPlugin()],
-    mode: 'development', // Change to 'production' for production builds
+    mode: 'production', // Change to 'production' for production builds
     devServer: {
       proxy: [
         {
@@ -25,7 +25,7 @@ module.exports = {
       static: {
         directory: path.join(__dirname, 'dist'),
       },
-      port: 4000, // The port you want to use
+      port: 3000, // The port you want to use
       open: true,
       hot:true,
       liveReload: true

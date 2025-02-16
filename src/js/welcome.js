@@ -4,7 +4,6 @@ class WelcomePage {
     const params = new URLSearchParams(window.location.search);
 
     const token = params.get("token");
-       
 
     if (token) {
       document.querySelector("main").classList.add("d-none");
@@ -31,7 +30,6 @@ class WelcomePage {
       if (reg_token) {
         document.body.querySelector("img").src = sessionStorage.getItem("profile_pic");
         this.register(reg_token, sessionStorage.getItem("ref_page"));
-        
       }
     }
   }
@@ -40,14 +38,10 @@ class WelcomePage {
 
     sessionStorage.clear();
     
-    console.log(registrationToken)
     document.querySelector("main").classList.remove("d-none");
     document.querySelector("#name").focus();
 
-    document.querySelector('.btn-secondary')
-      .addEventListener("click", () => {
-        this.reload(refPage);
-    });
+    document.querySelector('a.btn-secondary').href = refPage;
 
     document.querySelector("form").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -78,6 +72,8 @@ class WelcomePage {
             }
           })
           .then((auth_response) => {
+            console.log(auth_response);
+            
             this.reload(refPage, auth_response);
           })
           .catch(() => {
@@ -120,14 +116,11 @@ class WelcomePage {
     if(auth_response) {
       auth_response.expiresIn = Date.now() + auth_response.expiresIn;
       sessionStorage.setItem('auth', JSON.stringify(auth_response));
+      document.querySelector('a.btn-secondary').click();
     }
     
     if (refPage) {
       window.location.href = refPage;
-      window.location.replace(refPage);
-    } else {
-      window.location.href = "/";
-      window.location.replace("/");
     }
   }
 }
