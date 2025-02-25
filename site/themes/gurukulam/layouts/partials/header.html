@@ -44,7 +44,7 @@
         <div id="login-pane" class="row align-items-center">
 
           <div id="users-group" class="btn-group" role="group" aria-label="Basic outlined example">
-            {{ range readDir "static/img/users" }}
+            {{ range readDir "themes/gurukulam/static/img/users" }}
             <button type="button" name="{{ replace .Name ".png" "" }}" class="btn">
               <img src="/img/users/{{ .Name }}" class="img-circle img-thumbnail"
                 style="vertical-align: middle;border-radius: 50%;width: 42px;" alt="avatar">

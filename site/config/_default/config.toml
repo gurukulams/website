@@ -1,2 +1,20 @@
 title = "Gurukulams School"
 defaultContentLanguage = "en"
+
+theme = "gurukulam"
+
+[Languages]
+[Languages.en]
+weight = 0
+languagename = "English"
+contentDir = 'content.en'
+
+[Languages.ta]
+weight = 1
+languagename = "தமிழ்"
+contentDir = 'content.ta'
+
+[security]
+enableInlineShortcodes = true
+[security.funcs]
+getenv = ['^HUGO_','CONTEXT','BUILD_PRODUCTION']

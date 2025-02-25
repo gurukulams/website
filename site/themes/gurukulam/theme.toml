@@ -1,6 +1,5 @@
 name = "Ananke Gohugo Theme"
 license = "MIT"
-baseurl = "/"
 languageCode = "en-us"
 languageLang = "en"
 
@@ -9,7 +8,6 @@ languageLang = "en"
 weight = 0
 languagename = "English"
 contentDir = 'content.en'
-
 
 [Languages.ta]
 weight = 1
