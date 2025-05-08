@@ -9,10 +9,8 @@
     "watch:sass": "onchange \"src/scss\" -- run-s build:sass",
     "watch:js": "onchange \"src/js\" -- run-s build:js serve",
     "watch:site": "onchange \"site\" -- run-s build:site serve",
-
     "start": "npm run build && run-p watch:* serve",
     "serve": "webpack serve",
-
     "build:sass": "sass src/scss:dist/css",
     "build:js": "webpack",
     "build:site": "hugo --minify -d ../dist -s site",
