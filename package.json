@@ -7,12 +7,10 @@
   "license": "ISC",
   "scripts": {
     "watch:sass": "onchange \"src/scss\" -- run-s build:sass",
-    "watch:js": "onchange \"src/js\" -- run-s build:js",
     "watch:site": "onchange \"site\" -- run-s build:site",
     "start": "npm run build && run-p watch:* serve",
     "serve": "webpack serve",
     "build:sass": "sass src/scss:dist/css",
-    "build:js": "webpack",
     "build:site": "hugo --minify -d ../dist -s site",
     "build": "run-s build:*"
   },
