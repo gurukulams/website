@@ -10,7 +10,7 @@ module.exports = {
         return entries;
     }, {}),
     output: {
-        filename: 'js/[name].bundle.js', // Output JS bundles under the `js/` folder in dist
+        filename: 'js/[name].js', // Output JS bundles under the `js/` folder in dist
         path: path.resolve(__dirname, 'dist'),
     },
     // plugins: [new CleanWebpackPlugin()],
