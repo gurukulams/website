@@ -1,3 +1,4 @@
+const fs = require('fs').promises;
 const path = require('path');
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -18,7 +19,7 @@ module.exports = {
     devServer: {
       proxy: [
         {
-          context: ['/api','/oauth2','/swagger-ui','/v3/api-docs'],
+          context: ['/api', '/oauth2', '/swagger-ui', '/v3/api-docs', '/h2-console'],
           target: 'http://localhost:8080',
         },
       ],
@@ -28,6 +29,36 @@ module.exports = {
       port: 3000, // The port you want to use
       open: true,
       hot:true,
-      liveReload: true
+      liveReload: true,
+      setupMiddlewares: (middlewares, devServer) => {
+      
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      middlewares.unshift({
+        name: 'custom-headers',
+        middleware: (req, res, next) => {
+          res.setHeader('X-Content-Type-Options', 'nosniff');
+          next();
+        },
+      });
+    
+      devServer.app.get(['/questions*', '/ta/questions*'], async (req, res) => {
+        const content = await fs.readFile('./dist/practices/basic/index.html', 'utf8');
+        res.send(content);
+      });
+    
+      devServer.app.get('/profile*', async (req, res) => {
+        const content = await fs.readFile('./dist/profile/index.html', 'utf8');
+        res.send(content);
+      });
+    
+      return middlewares;
+    },       
+    },
+    performance: {
+        maxEntrypointSize: 500000,
+        maxAssetSize: 400000, // 400 KB
     }
 };

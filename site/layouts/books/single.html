@@ -1,0 +1,28 @@
+{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+
+<nav class="navbar">
+  <div class="row w-100">
+    <div class="col-4 text-start">
+      {{if .NextInSection}}<a href="{{strings.TrimRight "/" .NextInSection.Permalink}}">{{.NextInSection.Title}}</a>{{end}}
+    </div>
+    <div class="col-4 mb-2 text-center">
+      <a class="text-dark d-block"
+        href="{{strings.TrimRight "/" .Parent.Permalink}}">{{.Parent.Title}}</a>
+        <h5>{{.Title}}</h5>
+    </div>
+    <div class="col-4 text-end">
+      {{if .PrevInSection}}<a href="{{strings.TrimRight "/" .PrevInSection.Permalink}}">{{.PrevInSection.Title}}</a>{{end}}
+    </div>
+  </div>
+</nav>
+
+
+
+{{ partial "books-options.html" . }}
+
+  <main id="content" class="row min-vh-100">
+        {{- .Content -}}
+  </main>
+
+{{ end }}
+

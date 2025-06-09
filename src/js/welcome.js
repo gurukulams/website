@@ -1,12 +1,9 @@
-
-class WelcomePage {
+class Welcome {
   constructor() {
     const params = new URLSearchParams(window.location.search);
 
     const token = params.get("token");
-
     if (token) {
-      document.querySelector("main").classList.add("d-none");
       fetch("/api/auth/welcome", {
         headers: {
           "content-type": "application/json",
@@ -16,41 +13,57 @@ class WelcomePage {
         .then((response) => response.json())
         .then((auth_response) => {
           if (auth_response.authToken) {
-            this.reload(sessionStorage.getItem("ref_page"), auth_response);
+            // Why day ? Why ?
+            // auth_response.authToken = params.get("token");
+            auth_response.expiresIn = Date.now() + auth_response.expiresIn;
+            sessionStorage.auth = JSON.stringify(auth_response);
+            Welcome.reload();
           } else {
-            document.body.querySelector("img").src = auth_response.profilePicture;
             this.register(
               auth_response.registrationToken,
-              sessionStorage.getItem("ref_page")
+              auth_response.profilePicture,
             );
           }
         });
     } else {
-      const reg_token = sessionStorage.getItem("reg_token");
-      if (reg_token) {
-        document.body.querySelector("img").src = sessionStorage.getItem("profile_pic");
-        this.register(reg_token, sessionStorage.getItem("ref_page"));
+      if (sessionStorage.getItem("reg_token")) {
+        this.register(
+          sessionStorage.getItem("reg_token"),
+          sessionStorage.getItem("profile_pic"),
+        );
       }
+    }
+    this.setTheme();
+  }
+
+  static reload() {
+    const refPage = sessionStorage.getItem("ref_page");
+    sessionStorage.removeItem("ref_page");
+    if (refPage) {
+      window.location.href = refPage;
+      window.location.replace(refPage);
+    } else {
+      window.location.href = "/";
+      window.location.replace("/");
     }
   }
 
-  register(registrationToken, refPage) {
+  register(registrationToken, profile_pic) {
+    this.errorPane = document.querySelector(".text-danger");
 
-    sessionStorage.clear();
-    
+    document.body.querySelector("img").src = profile_pic;
     document.querySelector("main").classList.remove("d-none");
     document.querySelector("#name").focus();
 
-    document.querySelector('a.btn-secondary').href = refPage;
-
     document.querySelector("form").addEventListener("submit", (event) => {
+      event.token = registrationToken;
       event.preventDefault();
-      // this.errorPane.classList.add("d-none");
+      this.errorPane.classList.add("d-none");
       let regRequest = {
         name: document.querySelector("#name").value,
         dob: document.querySelector("#dob").value,
       };
-  
+
       const age = this.getAge(regRequest.dob);
 
       if (age < 10 || age > 80) {
@@ -60,7 +73,7 @@ class WelcomePage {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            Authorization: "Bearer " + registrationToken,
+            Authorization: "Bearer " + event.token,
           },
           body: JSON.stringify(regRequest),
         })
@@ -72,22 +85,15 @@ class WelcomePage {
             }
           })
           .then((auth_response) => {
-            console.log(auth_response);
-            
-            this.reload(refPage, auth_response);
+            auth_response.expiresIn = Date.now() + auth_response.expiresIn;
+            sessionStorage.auth = JSON.stringify(auth_response);
+            Welcome.reload();
           })
           .catch(() => {
             this.showError("Unable to register. Please contact admin");
           });
       }
     });
-
-  }
-
-  showError(errorMsg) {
-    const errorSpan = document.querySelector('label.text-danger');
-    errorSpan.classList.remove('invisible');
-    errorSpan.innerHTML = errorMsg;
   }
 
   getAge(value) {
@@ -111,17 +117,23 @@ class WelcomePage {
     return Math.abs(year - 1970);
   }
 
-  reload(refPage, auth_response) {
-  
-    if(auth_response) {
-      auth_response.expiresIn = Date.now() + auth_response.expiresIn;
-      sessionStorage.setItem('auth', JSON.stringify(auth_response));
-      document.querySelector('a.btn-secondary').click();
-    }
-    
-    if (refPage) {
-      window.location.href = refPage;
+  showError(errorTxt) {
+    this.errorPane.classList.remove("d-none");
+    this.errorPane.innerHTML = errorTxt;
+  }
+
+  static cancel() {
+    Welcome.reload();
+  }
+
+  setTheme() {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.setAttribute("data-bs-theme", theme);
+    } else {
+      document.documentElement.setAttribute("data-bs-theme", "auto");
     }
   }
 }
-new WelcomePage();
+
+new Welcome();

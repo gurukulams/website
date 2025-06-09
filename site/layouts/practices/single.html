@@ -1,0 +1,6 @@
+{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+<div id="content" data-type="{{.File.TranslationBaseName}}">
+    {{- .Content -}}
+</div>
+
+{{ end }}
