@@ -11,9 +11,6 @@ module.exports = [
       '/v3/api-docs',
       '/h2-console',
     ],
-    target: 'http://localhost:8080',
-    secure: false,     // ignore self-signed certs, if any
-    changeOrigin: true,
-    logLevel: 'debug', // helpful while developing
+    target: 'http://localhost:8080'
   },
 ];

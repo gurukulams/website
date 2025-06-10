@@ -1,4 +1,4 @@
-import { Dropdown } from "bootstrap";
+
 
 class GurukulamsPage {
   constructor() {
